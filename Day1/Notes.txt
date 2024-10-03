@@ -1,1 +1,156 @@
 Day 1 - OOPs
+
+Object Oriented Programming 
+
+Classes and Objects
+
+Class: A class is like a blueprint for creating objects. It defines a datatype, including methods and variables.
+
+Object: An instance of a class.
+
+Example:
+A car class can define attributes like color, model and methods like drive();
+
+Code Example :
+class Car{
+  // Attributes 
+    String color;
+    String model;
+    int speed;
+
+   //method
+  void drive(){
+System.out.println("The " + model + " is driving at "+ speed + "km/hr.");
+   }
+}
+
+public class Main{
+pubic static void main(String[] args){
+  //Creating an object
+  Car myCar = new Car();
+  myCar.color="Red";
+  myCar.model="Tesla 3";
+  myCar.speed=100;
+
+//Calling a method on object
+myCar.drive();
+  }
+}
+
+- Constructor 
+Constructors are used to initialize the state of an object when its created.
+Its name is same as class name.
+
+Code Example:
+class BankAccount{
+   int accountNumber;
+   double balance;
+
+ // Constructor 
+  BankAccount(int accNumber, double initialBalance){
+accountNumber = accNumber;
+balance  = initialBalance;
+} 
+
+
+void displayAccountInfo(){
+System.out.println("Account Number: "+ accounNumber + ", Balance: $ "+ balance);
+}
+}
+
+public class Main{
+ 	public static void main(String[] args){
+	// creating an object using the constructor
+             BankAccount myAccount = new BankAccount(12345,1000.89);
+	myAccount.displayAccountInfo();
+  }
+}
+
+- Methods 
+Methods define behavior in the class
+WorkAfterSession : Create a TV class with methods like turnOn(), turnOff(), changeChannel();
+------------------------------------------------------------------------------------------------------------------------
+Inheritance:
+Inheritance allows a class to inherit features (fields and methods) from another class.
+parent class - SuperClass
+child class   - SubClass
+
+//Superclass
+class Vehicle{
+String brand;
+
+void start(){
+System.out.println(brand  + " is starting......");
+    }
+}
+
+//Subclass 
+class Car extends Vehicle{
+	int doors;
+
+void displayCarInfo(){
+ System.out.println("car brand: " + brand + ", Number of doors: " + doors);
+    }
+}
+
+public class Main{
+public static void main(String[] args){
+	Car myCar = new Car();
+	myCar.brand = "BMW";
+                myCar.doors = 4;
+	myCar.start();
+                myCar.displayCarInfo();
+  }
+}
+---------------------------------------------------------------------------------------------------
+Polymorpism-
+Polymorphism allows methods to have different behaviours based on the object they are called on. It can be achieved through method overloading and method overriding.
+
+
+Ex.
+class Shape{
+     void draw(){
+   Sysout("Drawing a shape");
+   }
+}
+
+class Circle extends Shape{
+   void draw(){
+  Sysout("Drawing a circle");
+  }
+}
+
+class Rectangle extends Shape{
+	 void draw(){
+  Sysout("Drawing a rectangle");
+  }
+}
+
+ public class Main{
+public static void main(String[] args){
+ Shape shape1 = new Circle();
+ Shape shape2 = new Rectangle();
+
+shape1.draw();   //
+shape2.draw();  //
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
