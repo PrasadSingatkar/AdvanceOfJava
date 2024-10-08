@@ -1,0 +1,24 @@
+1:Revise All from theory Session
+
+2:Create Date Class with Data Members day,month, year
+2.1:Create an object and initialize it using setDate methods and display it using
+displayDate methods. 
+
+
+--------------------------------------------------------
+3:Create Student Class with RollNo,name,totalMarks and Grade
+.Create an object and initialize it using  assignStud method and print it using
+printStud  method. Create Object of  the student and call Methods
+
+
+-------------------------------------------------
+4:Create java application for bank account handling.
+4.1. Create a class BankAccount -- acct no(int),customer name(string),balance(double)
+ constr  to accept all details 
+
+4.2 Add Business logic methods
+Methods
+public void withdraw(double amt) 
+public void deposit(double amt)
+
+4.3:Create TestAccount class...Create object of account class and test withdraw and deposit methods.

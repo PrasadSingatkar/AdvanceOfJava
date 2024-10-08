@@ -1,0 +1,21 @@
+Inteface & Abstract Class
+
+1. Payment Processing System
+Problem:
+Create an abstract class Payment that has an abstract method makePayment(double amount). Implement two classes CreditCardPayment and UPIPayment that extend Payment. Each of these classes should print the amount being processed and the payment type.
+
+2. Employee Management System with Multiple Roles
+Problem:
+Create an interface Employee with a method calculateSalary().Now, implement two classes Manager and Developer that implement the Employee interface. Each role should have different salary structures. Additionally, each class should print a description of their role along with the salary.
+
+3. Online Store Order Processing
+Problem:
+Design an abstract class Order with an abstract method processOrder().Create two subclasses: OnlineOrder and InStoreOrder, where each subclass prints different steps to process the respective orders. For example, an online order might involve shipping, while an in-store order might involve pick-up.
+
+4. Media Player with Multiple Formats
+Problem:
+Create an interface MediaPlayer with methods play() and stop(). Implement two classes MP3Player and VideoPlayer that play and stop media in their respective formats (audio and video). Each class should print whether it's playing or stopping an audio or video file.
+
+5. Shopping Cart System
+Problem:
+Create an abstract class Item with methods getPrice() and getName(). Create subclasses Electronics and Clothes that implement the abstract methods and provide a price and name for each item. Finally, create a shopping cart where you can add different items and calculate the total price.
