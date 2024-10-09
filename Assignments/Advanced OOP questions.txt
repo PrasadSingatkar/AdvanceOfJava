@@ -1,0 +1,30 @@
+Advanced OOP questions
+
+1.
+Problem: Create a real-world hierarchy where Person is the base class. Student and Teacher inherit from Person, with each class having its specific attributes like grades for students and subjects for teachers. Demonstrate how inheritance is used to share common methods and how polymorphism allows handling different types of persons.
+
+Expected Outcome: Demonstrate inheritance where common functionality is shared, and different behavior is achieved through subclass-specific methods.
+
+
+2.
+Problem: Create an abstract class Animal with an abstract method makeSound(). Then create concrete subclasses Dog, Cat, and Cow that implement makeSound() in their own way. Additionally, create an interface Domesticable with a method isDomesticated(). Let only some animals implement the Domesticable interface. Create a method that checks whether an animal is domestic and prints its sound.
+
+Expected Outcome: This will demonstrate both polymorphism and the use of interfaces and abstract classes together.
+
+
+3.
+Problem: Implement a factory design pattern where you have an abstract class Transport with an abstract method deliver(). Then create subclasses Truck and Ship that implement the deliver() method. The factory class TransportFactory should decide which type of transport to return based on a parameter (e.g., Land for Truck and Sea for Ship).
+
+Expected Outcome: Abstraction and polymorphism should be evident in how the factory class creates different types of transport objects.
+
+
+4.
+Problem: Create two interfaces Flyable and Swimmable, each with a method performAction(). Implement a class Superhero that implements both interfaces and provides concrete implementations of performAction() for flying and swimming. Demonstrate how the Superhero class handles both actions.
+
+Expected Outcome: The Superhero class should show how multiple inheritance is achieved using interfaces, and the performAction() should exhibit polymorphism.
+
+
+5.
+Problem: Define an interface PaymentProcessor with a method processPayment(double amount). Implement two classes CreditCardPayment and PayPalPayment that implement this interface. Demonstrate polymorphism by creating a method that accepts PaymentProcessor as a parameter and processes payments without knowing the concrete class in advance.
+
+Expected Outcome: The same method should be able to process both CreditCardPayment and PayPalPayment types using polymorphism.
