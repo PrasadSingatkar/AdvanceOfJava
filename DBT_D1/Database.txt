@@ -1,0 +1,305 @@
+What is database?
+A database is a collection of data that is organizes and stored electronically in computer system.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Why Database?
+1.Organizing Information
+2.Handling large amounts of data 
+3.Ensures data accuracy
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Types of databases:
+1. Relational Database
+ Relational databases store data in tables that are related to each other through common fields.
+ They use Structured query language(SQL) to manage and query the data.
+
+Characteristics :
+1. data is organized into rows and columns
+2. Tables can be linked  together by using relationships
+3. data integrity and accuracy are maintained through constraints and rules.
+
+Examples:
+MySQL : Often used for web applications
+PostgreSQL: known for its advanced features and extensibility
+Microsoft SQL server : common in enterprise environments.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. NoSQL databases
+What?
+NoSQL databases are designed to handle unstructured or semi-structured data. 
+They do not use SQL for querying and are more flexible than relational database.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. In-memory database*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.NewSQL database*
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL(Structured Query Language)
+-It is like the language you use to talk with your database.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Old File System:
+                             -Redundancy (Duplication)
+                             -Loss of data(Natural Calamity, long duration)
+                             -No back up
+                             -large storage 
+                             -High cost
+                             -Retrieval (Time taking - tedious)
+                             - No Insertion /Updation
+                             - Security
+                             -No validation
+                             -No Constraints 
+                             -Transfer slow (File Transfer)
+                             -Concurrency
+                             -Recover
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+DBMS - database management system
+is a collection of interrelated data and set of programs to access those data
+
+1. Hierarchical Model 
+     This model is like a hierarchical tree structure, it is used to construct the hierarchy of records in the form of nodes and branches.
+The data elements present in the structure have a parent child relationship.
+
+2.Network Model
+3.Relational Model 
+   column = attribute =field
+   rows = tuples = record
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Database Technologies
+to store data in persitent devices there are two ways
+   - Files 
+            Manipulation of data is tedious 
+   - Database 
+            Reading and manipulating data is faster and easier than files
+            sharing of data is also possible
+            Security is also good 
+            It follows ACID  properties, hence good transaction control is there.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ACID Properties:
+
+A - Atomicity : 
+Every transaction should ne executed as a single unit, means all the steps should happen or none should happen.
+
+C - Consistency : 
+After every transaction data should be in correct state
+
+I - Isolation :
+Any user read the data when logs in should read the same data
+
+D - Durability : 
+For longer period of time there should e consistency and correctness in data
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. Creating our first database
+CREATE DATABASE flynaut;
+DROP DATABASE flynaut;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Creating our first table
+    	CREATE TABLE EMP 
+                                              (
+			EMPNO INT(4) NOT NULL PRIMARY KEY,
+                                                      ENAME varchar(20),
+                                                      JOB varchar(20),
+                                                      MGR INT(4),
+		                  HIREDATE DATE,
+                                                      SAL DECIMAL(7,2),
+                                                      COMM DECIMAL(7,2),
+		                   DEPTNO INT(4)
+                                            )
+DESC emp;    //To see the description of table
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Inserting values into table emp
+INSERT INTO EMP VALUES 
+        ( 7369, 'SMITH', 'CLERK', 7902,
+           STR_TO_DATE('17-DEC-1980','%d-%b-%Y'),800,NULL, 20);
+INSERT INTO EMP VALUES
+        (7369, 'SMITH',  'CLERK',     7902,
+        STR_TO_DATE('17-DEC-1980', '%d-%b-%Y'),  800, NULL, 20);
+INSERT INTO EMP VALUES
+        (7499, 'ALLEN',  'SALESMAN',  7698,
+        STR_TO_DATE('20-FEB-1981', '%d-%b-%Y'), 1600,  300, 30);
+INSERT INTO EMP VALUES
+        (7521, 'WARD',   'SALESMAN',  7698,
+        STR_TO_DATE('22-FEB-1981', '%d-%b-%Y'), 1250,  500, 30);
+INSERT INTO EMP VALUES
+        (7566, 'JONES',  'MANAGER',   7839,
+        STR_TO_DATE('2-APR-1981', '%d-%b-%Y'),  2975, NULL, 20);
+INSERT INTO EMP VALUES
+        (7654, 'MARTIN', 'SALESMAN',  7698,
+        STR_TO_DATE('28-SEP-1981', '%d-%b-%Y'), 1250, 1400, 30);
+INSERT INTO EMP VALUES
+        (7698, 'BLAKE',  'MANAGER',   7839,
+        STR_TO_DATE('1-MAY-1981', '%d-%b-%Y'),  2850, NULL, 30);
+INSERT INTO EMP VALUES
+        (7782, 'CLARK',  'MANAGER',   7839,
+        STR_TO_DATE('9-JUN-1981', '%d-%b-%Y'),  2450, NULL, 10);
+INSERT INTO EMP VALUES
+        (7788, 'SCOTT',  'ANALYST',   7566,
+        STR_TO_DATE('09-DEC-1982', '%d-%b-%Y'), 3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7839, 'KING',   'PRESIDENT', NULL,
+        STR_TO_DATE('17-NOV-1981', '%d-%b-%Y'), 5000, NULL, 10);
+INSERT INTO EMP VALUES
+        (7844, 'TURNER', 'SALESMAN',  7698,
+        STR_TO_DATE('8-SEP-1981', '%d-%b-%Y'),  1500,    0, 30);
+INSERT INTO EMP VALUES
+        (7876, 'ADAMS',  'CLERK',     7788,
+        STR_TO_DATE('12-JAN-1983', '%d-%b-%Y'), 1100, NULL, 20);
+INSERT INTO EMP VALUES
+        (7900, 'JAMES',  'CLERK',     7698,
+        STR_TO_DATE('3-DEC-1981', '%d-%b-%Y'),   950, NULL, 30);
+INSERT INTO EMP VALUES
+        (7902, 'FORD',   'ANALYST',   7566,
+        STR_TO_DATE('3-DEC-1981', '%d-%b-%Y'),  3000, NULL, 20);
+INSERT INTO EMP VALUES
+        (7934, 'MILLER', 'CLERK',     7782,
+        STR_TO_DATE('23-JAN-1982', '%d-%b-%Y'), 1300, NULL, 10);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL Datatypes:
+Categories of datatypes:
+1. String 
+2. Numeric
+3. Date & Time
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1.String Datatypes
+varchar
+char
+text,
+binary,
+BLOB,
+MEDIUMTEXT,
+LONGTEXT,
+ENUM,
+SET
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Numeric Datatypes
+INT
+BIT
+BIGINT
+FLOAT
+DOUBLE
+DECIMAL
+BOOLEAN
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Date & Time 
+Date YYYY-MM-DD
+DateTime YYYY-MM-DD hh:mm:ss
+Time hh:mm:ss
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Types of SQL commands
+ 
+DDL (Data Definition Language) : create, alter, truncate, drop
+DQL (Data Query Language )       : Select
+DML (Data Manipulation Language) : insert, update, delete
+DCL  (Data Control Language)  : Grant, Revoke
+TCL (Transaction Control Language) : commit, rollback, savepoint
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Primary Key:
+Minimal set of attributes which identifies the row uniquely
+Ex. We have a Hotel Table
+RoomNo, RoomLocation, RoomCharges, DateOfBooking, EmailID
+->EmailID (Primary Key)
+
+Foreign Key:
+A foreign key is a column in atable that refers to the primary key another table
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Constraints: 
+Constraints in MySQL are rules applied to columns in a table to ensure integrity, accuracy and reliability of data.
+Constraints prevent invalid data from being entered into the database.
+Ex.
+NOT NULL,primary key, foreign key,CHECK,DEFAULT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NOT NULL: 
+What?
+The NOT NULL constraint ensures that a column canniot have a null value(Column must always have a value when a record is inserted)
+EX.
+CREATE TABLE EMP 
+                                              (
+			EMPNO INT(4) NOT NULL PRIMARY KEY,
+                                                      ENAME varchar(20),
+                                                      JOB varchar(20),
+                                                      MGR INT(4),
+		                  HIREDATE DATE,
+                                                      SAL DECIMAL(7,2),
+                                                      COMM DECIMAL(7,2),
+		                   DEPTNO INT(4)
+                                            )
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.Primary Key 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.Foreign Key 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.CHECK
+The CHECK constraint ensures that all the values in a column meet the specific condition.
+It restricts the values that can be entered into a column based on a rule we have defined.
+
+Ex.
+Create table emp (
+  EMPNO INT PRIMARY KEY,
+  ENAME VARCHAR(59),
+  JOB VARCHAR(40),
+  SAL DECIMAL(7,2) CHECK (SAL > 0)       //Salary must be greater than zero  
+)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+5.default
+The default constraint provides a default value for a column if no value is specified during the insert operation.
+Ex.
+Create table emp (
+  EMPNO INT PRIMARY KEY,
+  ENAME VARCHAR(59),
+  JOB VARCHAR(40),
+  SAL DECIMAL(7,2) DEFAULT 1000   // Default salary is 1000
+)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SELECT STATEMENT:
+Example 
+Retrieve the employees names(ENAME) and their salaries (SAL) from emp table
+
+SELECT * FROM EMP;     //to retrieve all columns of table
+SELECT ENAME,SAL FROM EMP;
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OPERATORS:
+Arithmetic Operators : +,-,*/
+Relational Operators : =, !=, >,<
+Logical Operators : AND, OR, NOT
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Where clause : 
+The where clause is used to filter records. 
+It allows you to specify the conditions that data must meet to be included in the result set.
+
+Example:
+Q - Retrieve the employee names and job titles whose job is 'MANAGER'.
+-> SELECT ENAME,JOB from emp WHERE JOB = 'MANAGER'; 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Assignments
+
+Q - Select the employees number, name and salary from emp table.
+
+Q - Select the employees names and salaries for those whose job is 'SALESMAN'.
+
+Q - Select the employees names, job titles and salaries fo rthose who is working in department no. 30.
+
+Q - Select the employee names and job titles where the job is either manager or clerk.
+
+Select the employee names and commission where the commission is not null.
+
+Select the employee names and job titles where the job is 'MANAGER'
+
+Select the employee names and salaries where the salary is greater than 1500.
+
+Select the employee names and hire dates for employees hired between April 1, 1981, and May 1, 1981.
+
+Select the employee names and salaries where commission is not null (i.e., employees who receive a commission).
+
+Select the employee names where the name starts with the letter 'S'.
+
+Select the employee names and job titles where the job is either 'MANAGER' or 'CLERK'.
+
+Select the employee names where the salary is not equal to 5000.
+
+Select the employee names and hire dates where the hire date is greater than or equal to December 1, 1981.
+
+Select the employee names and salaries where the salary is between 1000 and 3000.
+
+Select the employee names, job titles, and salaries where the job is 'SALESMAN' and the salary is greater than 1200.
+
+
+
+
+
+
+
