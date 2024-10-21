@@ -1,0 +1,202 @@
+Agenda : 
+- Distinct Keyword
+- Aggregate Functions in SQL
+- Single Row Functions
+- Date Functions
+- DDL Statements 
+- Subquery
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+==========================================================================
+Distinct Keyword :
+
+What?
+It is used to remove duplicate records from our result set.
+It returns only unique values.
+
+SYNTAX:
+SELECT DISTINCT column1,column2
+from table_name;
+
+EXAMPLE:
+to find distinct  job roles in the company.
+-> SELECT DISTINCT JOB
+    FROM emp;
+-This  query lists all unique job titles, ignoring duplicates 
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+- Aggregate Functions in SQL
+
+Aggregate functions in SQL perform a calculation on a set of values and return a single result.
+1. COUNT() - returns the number of rows
+2. SUM()     - returns the total sum of a numeric column 
+3. AVG()      - returns the average value of numeric column
+4. MIN()      - returns the minimum value of the column
+5. MAX()     - returns the maximum value of the column.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. COUNT() - returns the number of rows
+Ex. SELECT DEPTNO, COUNT(*) AS num_employees
+       FROM EMP
+       GROUP BY DEPTNO;
+
+# Group By 
+
+IMPs:
+1. We must use group by when we want to group rows and apply aggregate functions on each group
+2. Columns that are not part of aggregate functions in the SELECT clause must be included in the group by clause
+3. The GROUP BY clause comes after the WHERE clause but before the ORDER BY clause(if used)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. SUM() 
+Ex.
+SELECT SUM(SAL) AS total_salary
+from emp;
+
+Ex. To calculate the total salary paid to employees in each department.
+SELECT DEPTNO, SUM(SAL) AS total_salary
+from emp;
+ERROR : ERROR 1140 (42000): In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'flynaut.emp.DEPTNO'; this is incompatible with sql_mode=only_full_group_by
+
+SELECT DEPTNO, SUM(SAL) AS total_salary
+from emp
+group by deptno;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. AVG()
+Ex. To calculate average salary across all employees.
+SELECT AVG(SAL) AS avg_salary
+from emp;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4.MIN() & MAX()
+ex. To find minimum and maximum salary in the company.
+SELECT MIN(sal) AS min_salary, MAX(SAL) AS 'max salary'
+from emp;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. COUNT() with DISTINCT
+EX. To count how many distinct job roles exist 
+SELECT COUNT(DISTINCT JOB) AS UNIQUE_Jobs
+from emp;
+==========================================================================
+- Single Row Functions
+==========================================================================
+1. sqrt(num) : returns the square root of the number
+
+SELECT sqrt(1600);
+This will return 40, as the square root of 1600 is 40.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. abs(num) : Returns the absolute value(Positive) of a number.
+
+SELECT abs(-5);
+This will return the absolute value of -5 which is 5.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. round(num, n) : rounds a number to n decimal places.
+
+SELECT round(123.45678, 3);
+This rounds 123.45678 to 3 decimal places.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. truncate(num, n) :  rounds a number to n decimal places without rounding
+
+SELECT truncate(123.45678, 3);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. ceil(num) : 
+
+Select ceil(12.3);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. floor(num) :
+
+Select floor(12.3);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. ascii(str) : 
+
+SELECT ascii('A');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. substr(str, start , length) : Extracts a substring from the string starting at a specific position.
+
+SELECT substr('Database',2,4);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+9.concat(str1,str2) : concatenates 2 strings 
+
+SELECT concat(ENAME , ' is a ' , JOB) AS output from emp;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+10. lower(str) : converts a string to lowercase
+
+SELECT lower('HELLO');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+11.  upper(str) : converts a string to uppercase
+
+SELECT upper('HeLlo');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+12. instr(str, substr) : returns the position of a substring in a string.
+
+SELECT instr('Database' ,'base');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+13. trim(str) : Removes a leading and trailing spaces from a string
+
+SELECT trim('                              HELLO                                 ');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+14. lpad(str, length, padstr) : left-pads a character with a specified character
+
+SELECT lpad('Hello',10,'@');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+15. rpad(str, length, padstr) : right-pads a character with a specified character
+
+SELECT rpad('Hello',10,'@');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+16. length(str) : returns the length of a string
+
+SELECT length('Hello');
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+17. format(num, d) : Formats a number to d decimal places
+
+SELECT format(123.6789,2);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+===========================================================================
+- Date Functions
+1. curdate() : will show only date
+SELECT curdate();
+
+2. Now() : will give currentdate and time as well
+SELECT NOW();
+
+3. date_format() : to display date in user understandable format
+Ex :
+To display the hiredate in the  format September 27 2023
+SELECT date_format(curdate(), '%M %D %y');
+
+%d  : date
+%m : month
+%y  : year(2 digit)
+%Y : year (4 digit)
+%D : add th in th/st/nd date
+%M : monthname in character
+
+4.DATEDIFF(fromdate,todate) : it gives no. of days difference between 2 dates.
+Ex.:
+SELECT DATEDIFF('2001-11-23','2000-12-01');
+
+#To find the exp of every employee in years
+SELECT empno,ename,floor(datediff(curdate(),hiredate)/365) Experience 
+from emp;
+===========================================================================
+DDL Statements: 
+===========================================================================
+CREATE Statement: 
+CREATE Statement: 
+What: The CREATE statement is used to create new tables, indexes, or databases. It defines the structure of the table, including column names and their data types.
+
+How:
+CREATE TABLE DEPARTMENT (
+    DEPTNO INT PRIMARY KEY,
+    DNAME VARCHAR(50)
+);
+Explanation: This creates a DEPARTMENT table with two columns: DEPTNO (an integer that is also the primary key) and DNAME (a string of up to 50 characters).
+===========================================================================
+ALTER Statement:
+What: The ALTER statement is used to modify the structure of an existing table. It can add, modify, or delete columns in a table.
+
+How:
+ALTER TABLE EMP ADD AGE INT;
+Explanation: This command adds a new column called AGE of type INT to the EMP table. After running this, the table will have a new column where age information for employees can be stored.
+
+Example:
+ALTER TABLE EMP MODIFY SAL DECIMAL(10, 2);
+Explanation: This modifies the SAL (salary) column in the EMP table to hold a decimal value with up to 10 digits and 2 decimal places. For example, a salary value of 5000.75 can now be stored as 5000.75.
+
+
