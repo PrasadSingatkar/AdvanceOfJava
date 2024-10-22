@@ -1,0 +1,149 @@
+mysql> use flynaut;
+Database changed
+mysql> select * from employee;
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | EMP_NAME | JOB       | MGR  | HIREDATE   | SAL     | COMM    | DEPTNO | AGE  |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT    | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS    | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 |  950.00 |    NULL |     30 | NULL |
+|  7902 | FORD     | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE
+    -> CHANGE SAL SALARY VARCHAR(50);
+Query OK, 13 rows affected (0.07 sec)
+Records: 13  Duplicates: 0  Warnings: 0
+
+mysql> select * from employee;
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | EMP_NAME | JOB       | MGR  | HIREDATE   | SALARY  | COMM    | DEPTNO | AGE  |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT    | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS    | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 | 950.00  |    NULL |     30 | NULL |
+|  7902 | FORD     | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE
+    ->     ALTER AGE SET DEFAULT 30;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE EMP
+    ->      MODIFY AGE INT NOT NULL;
+ERROR 1146 (42S02): Table 'flynaut.emp' doesn't exist
+mysql> ALTER TABLE EMPLOYEE
+    ->      MODIFY AGE INT NOT NULL;
+ERROR 1138 (22004): Invalid use of NULL value
+mysql> ALTER TABLE EMPLOYEE
+    ->     RENAME TO EMP;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from emp;
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+| EMPNO | EMP_NAME | JOB       | MGR  | HIREDATE   | SALARY  | COMM    | DEPTNO | AGE  |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+|  7499 | ALLEN    | SALESMAN  | 7698 | 1981-02-20 | 1600.00 |  300.00 |     30 | NULL |
+|  7521 | WARD     | SALESMAN  | 7698 | 1981-02-22 | 1250.00 |  500.00 |     30 | NULL |
+|  7566 | JONES    | MANAGER   | 7839 | 1981-04-02 | 2975.00 |    NULL |     20 | NULL |
+|  7654 | MARTIN   | SALESMAN  | 7698 | 1981-09-28 | 1250.00 | 1400.00 |     30 | NULL |
+|  7698 | BLAKE    | MANAGER   | 7839 | 1981-05-01 | 2850.00 |    NULL |     30 | NULL |
+|  7782 | CLARK    | MANAGER   | 7839 | 1981-06-09 | 2450.00 |    NULL |     10 | NULL |
+|  7788 | SCOTT    | ANALYST   | 7566 | 1982-12-09 | 3000.00 |    NULL |     20 | NULL |
+|  7839 | KING     | PRESIDENT | NULL | 1981-11-17 | 5000.00 |    NULL |     10 | NULL |
+|  7844 | TURNER   | SALESMAN  | 7698 | 1981-09-08 | 1500.00 |    0.00 |     30 | NULL |
+|  7876 | ADAMS    | CLERK     | 7788 | 1983-01-12 | 1100.00 |    NULL |     20 | NULL |
+|  7900 | JAMES    | CLERK     | 7698 | 1981-12-03 | 950.00  |    NULL |     30 | NULL |
+|  7902 | FORD     | ANALYST   | 7566 | 1981-12-03 | 3000.00 |    NULL |     20 | NULL |
+|  7934 | MILLER   | CLERK     | 7782 | 1982-01-23 | 1300.00 |    NULL |     10 | NULL |
++-------+----------+-----------+------+------------+---------+---------+--------+------+
+13 rows in set (0.00 sec)
+
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_flynaut |
++-------------------+
+| department        |
+| emp               |
++-------------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT MAX(SAL) FROM EMP;
+ERROR 1054 (42S22): Unknown column 'SAL' in 'field list'
+mysql> SELECT MAX(SALARY) FROM EMP;
++-------------+
+| MAX(SALARY) |
++-------------+
+| 950.00      |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT EMPNO,EMP_NAME,SAL
+    ->      FROM EMP
+    ->      WHERE SAL = (SELECT MAX(SAL) FROM EMP);
+ERROR 1054 (42S22): Unknown column 'SAL' in 'field list'
+mysql>   SELECT EMPNO,EMP_NAME,SALARY
+    ->      FROM EMP
+    ->      WHERE SAL = (SELECT MAX(SALARY) FROM EMP);
+ERROR 1054 (42S22): Unknown column 'SAL' in 'where clause'
+mysql> SELECT EMPNO,EMP_NAME,SALARY
+    ->      FROM EMP
+    ->      WHERE SALARY = (SELECT MAX(SALARY) FROM EMP);
++-------+----------+--------+
+| EMPNO | EMP_NAME | SALARY |
++-------+----------+--------+
+|  7900 | JAMES    | 950.00 |
++-------+----------+--------+
+1 row in set (0.00 sec)
+
+mysql> select EMPNO, EMP_name, SALARY from emp
+    ->        where salary >( select avg(salary) from emp);
++-------+----------+---------+
+| EMPNO | EMP_name | SALARY  |
++-------+----------+---------+
+|  7566 | JONES    | 2975.00 |
+|  7698 | BLAKE    | 2850.00 |
+|  7782 | CLARK    | 2450.00 |
+|  7788 | SCOTT    | 3000.00 |
+|  7839 | KING     | 5000.00 |
+|  7902 | FORD     | 3000.00 |
++-------+----------+---------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT EMPNO, EMP_NAME, DEPTNO
+    -> FROM EMP
+    -> WHERE DEPTNO IN ( SELECT DEPTNO FROM EMP WHERE EMP_NAME = 'blake');
++-------+----------+--------+
+| EMPNO | EMP_NAME | DEPTNO |
++-------+----------+--------+
+|  7499 | ALLEN    |     30 |
+|  7521 | WARD     |     30 |
+|  7654 | MARTIN   |     30 |
+|  7698 | BLAKE    |     30 |
+|  7844 | TURNER   |     30 |
+|  7900 | JAMES    |     30 |
++-------+----------+--------+
+6 rows in set (0.00 sec)
+
+mysql>

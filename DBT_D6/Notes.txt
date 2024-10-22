@@ -1,0 +1,77 @@
+Agenda :
+- Workbench 
+- Alter Examples
+- Subquery
+======================================================================================
+Assume we have a medicine table(mid,mname,price,exp_date)
+
+1. find all medicines which will expire in 3 months
+2. find all products which are not expired
+
+======================================================================================
+- Alter Examples
+
+1. To add new column age in employee table 
+>> ALTER TABLE EMP ADD AGE INT;
+
+2. To add a constraint not null to age column
+>> ALTER TABLE EMPLOYEE
+     MODIFY AGE INT NOT NULL;
+
+3. Rename a column SAL to SALARY
+>> ALTER TABLE EMPLOYEE
+     CHANGE SAL SALARY VARCHAR(50);
+
+4. DROP A COMM COLUMN
+>> ALTER TABLE EMPLOYEE 
+     DROP COLUMN COMM;
+
+5. CHANGE THE DEFAULT VALUE OF A COLUMN AGE TO 30
+>> ALTER TABLE EMPLOYEE 
+    ALTER AGE SET DEFAULT 30;
+
+6.RENAME THE TABLE EMPLOYEE TO EMP
+>>ALTER TABLE EMPLOYEE
+    RENAME TO EMP;
+-----------------------------------------------------------------------------
+Hint : concat,trim,LEADING
+-----------------------------------------------------------------------------
+- Subquery : 
+What?
+ - A subquery is a query nested inside another query
+ - Subqueries can return individual values or a set of rows for use in the outer query
+ - They are typically used for comparisons, filtering data, or joining related data between tables
+
+Types of subqueries:
+1. Single row subquery : it returns a single row of results
+2. Multiple row subquery : returns multiple rows of results
+3. Nested subqueries : A subquery inside another subquery
+----------------------------------------------------------------------------------------------------------------------------------------------
+Examples:
+1 . retrieve the details of the employees who has the highest salary in the company.
+>> SELECT EMPNO,EMP_NAME,SALARY
+     FROM EMP
+     WHERE SALARY = (SELECT MAX(SALARY) FROM EMP);
+ 
+SELECT EMPNO,EMP_NAME,SAL
+     FROM EMP
+     WHERE SAL = 950;
+
+2. FIND THE EMPLOYEES WHO EARN MORE THAN THE AVERAGE SALARY OF ALL EMPLOYEES
+>>  select EMPNO, EMP_name, SALARY from emp
+       where salary >( select avg(salary) from emp);
+
+3. List the employees who work in the same department as 'BLAKE'.
+SELECT EMPNO, EMP_NAME, DEPTNO
+FROM EMP
+WHERE DEPTNO IN ( SELECT DEPTNO FROM EMP WHERE EMP_NAME = 'blake');
+
+4. Find the names and salaries of employees who earn more than 'WARD'.
+5. List all employees who were hired after 'JONES'.
+6. Show the department numbers that have more than 3 employees.
+7. Find the employees who earn same salary as 'FORD'.
+8. find the second highest salary in the company.
+9. List all managers and their subordinates.
+10. List all employees whose manager earns more than 3000. 
+
+
