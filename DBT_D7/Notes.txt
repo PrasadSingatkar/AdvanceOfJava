@@ -1,0 +1,127 @@
+Agenda
+  - Department Table
+ - JOINS 
+   ~ Inner Join
+   ~ Left Join (or Left Outer Join)
+   ~ Right Join (or Right Outer Join)
+   ~ Full Join (Full Outer Join) (UNION)
+- Examples
+- Assignment Qs
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ - Creating Department table
+   
+create table dept
+(
+DEPTNO INT(2) Primary Key,
+DNAME varchar(30),
+LOC varchar(20)
+);
+
+ - Inserting values into department table
+ 
+INSERT INTO DEPT VALUES (10, 'ACCOUNTING', 'NEW YORK');
+INSERT INTO DEPT VALUES (20, 'RESEARCH', 'DALLAS');
+INSERT INTO DEPT VALUES (30, 'SALES', 'CHICAGO');
+INSERT INTO DEPT VALUES (40, 'OPERATIONS', 'BOSTON');
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ - JOINS 
+If we want to display information from more than one table then we use joins.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+~ Inner Join 
+  - Returns only the records that have matching values in both the tables.
+
+SYNTAX:
+SELECT columns
+FROM table1
+INNER JOIN table 2
+ON table1.column = table2.column;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  ~ Left Join (or Left Outer Join)
+- returns all the records from the left table , and matched records from right table.
+- If no match is found, NULL is returned for the columns from right table.
+
+SYNTAX:
+SELECT columns 
+FROM table1
+LEFT JOIN table2
+ON table1.column = table2.column
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ~ Right Join (or Right Outer Join)
+
+- returns all the records from right table, and matched records from left table.
+- If no match is found, NULL is returned for the columns from left table.
+
+SYNTAX:
+SELECT columns 
+FROM table1
+RIGHT JOIN table2
+ON table1.column = table2.column
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+~ Full Join (Full Outer Join) (UNION)
+
+- MySQL does not directly supports FULL JOIN, but we can achieve it using UNION.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. INNER JOIN EXAMPLE: 
+Ex. To retrieve the employees and their department names, showing only those who are assigned to a department.
+
+Query:
+SELECT EMP.EMP_NAME,EMP.JOB, DEPT.DNAME
+FROM EMP
+INNER JOIN DEPT
+ON EMP.DEPTNO = DEPT.DEPTNO;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Left Join (or Left Outer Join) Example
+Ex. To retrieve all employees and their corresponding department names, even if some employees do not belong to any department.
+
+Query:
+SELECT EMP.EMP_NAME,EMP.JOB, DEPT.DNAME
+FROM EMP
+LEFT JOIN DEPT
+ON EMP.DEPTNO = DEPT.DEPTNO;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Right Join (or Right Outer Join) Example
+Ex. Retrieve all departments and the employees working in them, including departments that do not have any employees.
+
+Query:
+SELECT EMP.EMP_NAME,EMP.JOB, DEPT.DNAME
+FROM emp
+RIGHT JOIN dept
+on emp.deptno = dept.deptno;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example of UNION 
+Suppose we want to list all the department names and all the employee job titles in one result set.
+
+Step 1 : 
+SELECT DNAME AS NAME 
+FROM DEPT;
+
+Step 2 :
+SELECT JOB AS NAME
+FROM EMP;
+
+STEP 3:
+SELECT DNAME AS NAME 
+FROM DEPT
+UNION
+SELECT JOB AS NAME
+FROM EMP;
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+can we take left outer join query union right outer join query ? 
+
+SELECT EMP.Emp_NAME,EMP.JOB,DEPT.DNAME
+  FROM EMP
+ LEFT JOIN DEPT
+ ON EMP.DEPTNO=DEPT.DEPTNO
+  UNION
+ SELECT EMP.Emp_NAME,EMP.JOB,DEPT.DNAME
+ FROM EMP
+   RIGHT JOIN DEPT
+     ON EMP.DEPTNO=DEPT.DEPTNO;
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT CONCAT(TRIM(EMP_NAME), '.') AS Modified_ENAME
+FROM EMP;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Write a query using INNER JOIN to display the employee name, job, salary, and department name for all employees.
+Write a query using LEFT JOIN to display the employee name, job, and department name for all employees, including those who may not belong to any department.
+Write a query using RIGHT JOIN to display all departments and the employees working in them, including departments that have no employees assigned.
