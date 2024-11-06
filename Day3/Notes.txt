@@ -1,0 +1,167 @@
+Agenda : 
+~ Set Interface
+	- Hashset
+	- LinkedHashset
+    ~ SortedSet
+	-Treeset
+===========================================================================
+~ Set Interface :
+Sets store unique elements and do not allow duplicates.
+Two common implementations are HashSet and LinkedHashSet.
+===========================================================================
+* HashSet 
+HashSet is a class that implements the set interface.
+It allows nul values and stores elements in an unordered way.
+
+~ Characteristics of HashSet
+	- Does not maintain any order of elements
+	- Best suited for quick add, remove, and conatins operations
+===========================================================================
+package HashSet;
+
+import java.util.HashSet;
+
+public class HashSetExample {
+    public static void main(String[] args){
+
+        // Creating a HashSet
+        HashSet<String> fruits = new HashSet<>();
+
+        // Adding Elements to the hashset
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Orange");
+        fruits.add("Grapes");
+
+        //Displaying the Hashset
+        System.out.println("HasSet : " + fruits);
+
+        // Checking the element exist or not
+        System.out.println("Does hashset contains banana ? "+ fruits.contains("Banana"));
+
+        // Removing an element
+        fruits.remove("Orange");
+        System.out.println("After removal : " + fruits);
+
+        // To check the size of the set
+        System.out.println("Size of HashSet :" + fruits.size());
+
+        // To clear all the elements from the set
+        fruits.clear();
+        System.out.println("Is HashSet Empty ? " + fruits.isEmpty());
+    }
+}
+===========================================================================
+o/p :
+HasSet : [Apple, Grapes, Orange, Banana]
+Does hashset contains banana ? true
+After removal : [Apple, Grapes, Banana]
+Size of HashSet :3
+Is HashSet Empty ? true
+===========================================================================
+Methods of HashSet:
+ 
+add(E element) : Adds the specified element to the set if it is not already present.
+remove(Object o) : Removes the specified element from the set
+contains(Object o) : Returns true if the set contains the specified element
+size() : returns the number of elements in the set
+isEmpty() : Checks if the set is empty or not.
+clear() : Removes all the elements from set. 
+===========================================================================
+* LinkedHashset
+LinkedHashset is similar to HashSet but maintains a doubly-linked list across all elements.
+
+Characteristics :
+- Maintains the inertion order
+- Slightly slower than hashset because it maintains the order
+===========================================================================
+package LinkedHashSet;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetExample {
+    public static void main(String[] args){
+        // Creating LinkedHashSet
+        LinkedHashSet<String> cities = new LinkedHashSet<>();
+
+        // Adding elements to the linkedHashSet
+        cities.add("Mumbai");
+        cities.add("Nagpur");
+        cities.add("Sambhajinagar");
+        cities.add("Pune");
+
+        // Displaying the LinkedHashSet
+        System.out.println("LinkedHashSet : " + cities);
+
+        // Checking if an element exists
+        System.out.println("Does it contain Pune ? " + cities.contains("Pune"));
+
+    }
+}
+===========================================================================
+O/P :
+LinkedHashSet : [Mumbai, Nagpur, Sambhajinagar, Pune]
+Does it contain Pune ? true
+===========================================================================
+Methods:
+add(E element)
+remove(Object o)
+contains(Object o)
+size()
+isEmpty()
+clear()
+===========================================================================
+~ SortedSet
+	-Treeset
+A TreeSet is an implementation of the set interface that uses a tree data structure to store elements in sorted order.
+===========================================================================
+ 
+package TreeSet;
+
+import java.util.TreeSet;
+
+public class TreeSetExample {
+    public static void main(String[] args){
+        //Creating a TreeSet of integers
+        TreeSet<Integer> numbers = new TreeSet<>();
+
+        //Adding the elements to the TreeSet
+        numbers.add(20);
+        numbers.add(10);
+        numbers.add(40);
+        numbers.add(30);
+
+        // Dispplaying the TreeSet
+        System.out.println("TreeSet : " + numbers);
+
+        //Accessing the first and last method
+        System.out.println("First Element : " + numbers.first());
+        System.out.println("Last Element : " + numbers.last());
+
+        //Removing an element
+        numbers.remove(20);
+        System.out.println("After Removal TreeSet : " + numbers);
+
+        //Checking if an element exists
+        System.out.println("Does it contain 100 ? "+ numbers.contains(100));
+
+        //Polling elements
+        System.out.println("Poll first element : "+ numbers.pollFirst());
+        System.out.println("After polling TreeSet : " + numbers);
+    }
+}
+===========================================================================
+O/P
+TreeSet : [10, 20, 30, 40]
+First Element : 10
+Last Element : 40
+After Removal TreeSet : [10, 30, 40]
+Does it contain 100 ? false
+Poll first element : 10
+After polling TreeSet : [30, 40]
+===========================================================================
+Methods:
+https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/TreeSet.html
+===========================================================================
+
+
