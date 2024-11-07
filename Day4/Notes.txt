@@ -1,0 +1,149 @@
+1. Map Interface 
+The Map interface in Java stores key-value pairs where each key is unique. It does not inherit from Collection but is still part of the Java Collection Framework.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Hashtable
+
+~ Properties:
+Hashtable is synchronized, which makes it thread-safe.
+It does not allow null keys or values.
+Its entries are not ordered.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Code Example: 
+import java.util.Hashtable;
+
+public class HashtableExample {
+    public static void main(String[] args) {
+        Hashtable<Integer, String> ht = new Hashtable<>();
+        
+        ht.put(1, "Apple");
+        ht.put(2, "Banana");
+        ht.put(3, "Cherry");
+
+        System.out.println("Hashtable elements: " + ht);
+        
+        // Accessing elements
+        System.out.println("Value for key 2: " + ht.get(2));
+
+        // Removing an element
+        ht.remove(3);
+        System.out.println("After removing key 3: " + ht);
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Methods : 
+put() adds key-value pairs.
+get() retrieves the value associated with a key.
+remove() deletes the specified key-value pair.
+=====================================================================================================
+3. HashMap
+
+Properties:
+HashMap is unsynchronized, so it is not thread-safe.
+Allows one null key and multiple null values.
+Does not guarantee any specific order for keys.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.HashMap;
+
+public class HashMapExample {
+    public static void main(String[] args) {
+        HashMap<Integer, String> hm = new HashMap<>();
+
+        hm.put(1, "Apple");
+        hm.put(2, "Banana");
+        hm.put(null, "Orange");
+        hm.put(4, null);
+
+        System.out.println("HashMap elements: " + hm);
+
+        // Accessing elements
+        System.out.println("Value for key null: " + hm.get(null));
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Suitable for non-threaded applications where null values are acceptable.
+=====================================================================================================
+4. LinkedHashMap
+
+Properties:
+Maintains insertion order, so entries are iterated in the order they were added.
+Not synchronized (not thread-safe).
+Allows null keys and values.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.LinkedHashMap;
+
+public class LinkedHashMapExample {
+    public static void main(String[] args) {
+        LinkedHashMap<Integer, String> lhm = new LinkedHashMap<>();
+
+        lhm.put(1, "Apple");
+        lhm.put(2, "Banana");
+        lhm.put(3, "Cherry");
+        lhm.put(null, "Orange");
+
+        System.out.println("LinkedHashMap elements: " + lhm);
+
+        // Accessing elements by order of insertion
+        lhm.forEach((k, v) -> System.out.println("Key: " + k + ", Value: " + v));
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Maintains order, making it ideal when the order of elements matters.
+=====================================================================================================
+5. TreeMap (SortedMap Interface)
+
+Properties:
+Maintains natural ordering (ascending order) of keys or uses a specified comparator.
+Does not allow null keys but allows multiple null values.
+Not synchronized (not thread-safe).
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+import java.util.TreeMap;
+
+public class TreeMapExample {
+    public static void main(String[] args) {
+        TreeMap<Integer, String> tm = new TreeMap<>();
+
+        tm.put(3, "Cherry");
+        tm.put(1, "Apple");
+        tm.put(2, "Banana");
+        tm.put(4, null);
+
+        System.out.println("TreeMap elements in ascending order: " + tm);
+
+        // Retrieving elements in sorted order
+        tm.forEach((k, v) -> System.out.println("Key: " + k + ", Value: " + v));
+    }
+}
+=====================================================================================================
+* What is thread-safe?
+
+Definition: A class or method is considered thread-safe if it can be safely used by multiple threads at the same time without causing inconsistent or incorrect behavior.
+
+Purpose: Thread-safe code ensures that shared resources (like variables or data structures) are accessed by only one thread at a time or in a controlled way, preventing issues like race conditions* or data corruption.
+
+Example: In a thread-safe class like Hashtable, if two threads try to modify or access it at the same time, the operations will be managed so that only one thread can modify the data at a time.
+=====================================================================================================
+* What is Synchronized?
+
+Definition: Synchronization is a mechanism that restricts multiple threads from accessing a particular block of code or resource simultaneously. It is a way to implement thread-safety.
+
+Purpose: By marking a method or block of code with the synchronized keyword, Java ensures that only one thread can execute that part of the code at any given time. Other threads trying to access the synchronized code have to wait until the current thread finishes.
+
+How It Works: When a method is synchronized, it locks the object (or class, if it’s a static method) so that other threads have to wait until the lock is released.
+=====================================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
